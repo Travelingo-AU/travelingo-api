@@ -8,6 +8,10 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching; required in config/boot.rb
 
+# API
+
+gem 'grape'
+
 # ASSETS
 
 gem 'sass-rails', '~> 5.0'
