@@ -3,7 +3,8 @@ module Travelingo
     class V1Root < Grape::API
       desc 'Return a public timeline.'
       get :test do
-        present('200')
+        logger.info ("testing EP logger")
+        raise "TEST"
       end
 
       group do
