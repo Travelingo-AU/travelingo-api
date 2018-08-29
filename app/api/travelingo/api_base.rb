@@ -7,7 +7,6 @@ module Travelingo
     # LOGGING & ERRORS
     #
 
-
     # See https://github.com/aserafin/grape_logging
     logger.formatter = GrapeLogging::Formatters::Default.new
     use GrapeLogging::Middleware::RequestLogger, { logger: logger }

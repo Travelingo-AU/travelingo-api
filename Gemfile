@@ -11,6 +11,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching; required in config/boot.rb
 
+gem 'phony_rails'
+
 # API
 
 gem 'grape'
@@ -33,7 +35,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # TOOLS
 
-gem 'pry'
+gem 'pry-rails'
 
 group :development do
   gem 'annotate' # use rake annotate_models | rake remove_annotation if want to force annotation

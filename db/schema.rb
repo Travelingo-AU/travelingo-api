@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_08_29_201716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.boolean "email_verified", default: false, null: false
+    t.string "full_name", null: false
+    t.string "firebase_user_uid", null: false
+    t.jsonb "firebase_meta", default: {}, null: false
+    t.date "dob"
+    t.string "picture_url"
+    t.string "mobile"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
 
 end
