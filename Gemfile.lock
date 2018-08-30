@@ -16,6 +16,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    ace-rails-ap (4.1.4)
     actioncable (5.2.1)
       actionpack (= 5.2.1)
       nio4r (~> 2.0)
@@ -51,6 +52,9 @@ GEM
       ransack (>= 1.8.7)
       sass (~> 3.1)
       sprockets (< 4.1)
+    activeadmin_json_editor (0.0.9)
+      ace-rails-ap
+      railties (>= 3.0)
     activejob (5.2.1)
       activesupport (= 5.2.1)
       globalid (>= 0.3.6)
@@ -287,6 +291,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  activeadmin_json_editor
   annotate
   awesome_print
   bootsnap (>= 1.1.0)

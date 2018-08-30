@@ -21,6 +21,8 @@
 #
 
 class User < ApplicationRecord
+  include FullName
+
 
   #
   # ATTRIBUTES
@@ -31,13 +33,6 @@ class User < ApplicationRecord
   # See http://api.rubyonrails.org/classes/ActiveRecord/Store.html
   store_accessor :firebase_meta, [:identities, :sign_in_provider]
 
-  def first_name
-    (self[:full_name].split(/\s+/)[0]) if self[:full_name].present?
-  end
-
-  def last_name
-    (self[:full_name].split(/\s+/)[1]) if self[:full_name].present?
-  end
 
   #
   # VALIDATION

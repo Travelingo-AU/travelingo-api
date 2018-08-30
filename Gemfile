@@ -17,6 +17,7 @@ gem 'phony_rails'
 # ADMIN
 
 gem 'activeadmin'
+gem 'activeadmin_json_editor'
 
 # API
 

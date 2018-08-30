@@ -9,6 +9,8 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #
@@ -17,10 +19,13 @@
 #
 
 class AdminUser < ApplicationRecord
+  include FullName
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
+  validates :full_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, length: { minimum: 8 }
 end
