@@ -11,7 +11,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching; required in config/boot.rb
 
-gem 'devise'
+# gem 'devise'
 gem 'phony_rails'
 
 # ADMIN
@@ -27,6 +27,10 @@ gem 'grape-entity' #, '0.6.0' # 0.6.1 depends on AS 5.0
 gem 'grape-swagger', github: 'ruby-grape/grape-swagger' # Very problematic gem
 gem 'grape-swagger-entity', github: 'ruby-grape/grape-swagger-entity' # see https://github.com/ruby-grape/grape-swagger/issues/424
 gem 'rack-cors', :require => 'rack/cors'
+gem 'yajl-ruby', require: 'yajl' #, github: 'vanburg/yajl-ruby', branch: 'drop-deprecation-warning' # A streaming JSON C-parsing
+gem 'warden'
+gem 'httparty'
+gem 'jwt'
 
 # ASSETS
 
@@ -36,12 +40,11 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
 # TOOLS
 
 gem 'pry-rails'
+gem 'database_rewinder', require: false # Used for rake db:seed in production too
+gem 'factory_bot', require: false # Used for rake db:seed in production too
 
 group :development do
   gem 'annotate' # use rake annotate_models | rake remove_annotation if want to force annotation
@@ -50,4 +53,10 @@ group :development do
 
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'json_expressions'
+  gem 'rspec-rails'
+  gem 'webmock'
 end

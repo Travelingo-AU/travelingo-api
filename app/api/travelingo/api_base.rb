@@ -9,7 +9,7 @@ module Travelingo
 
     # See https://github.com/aserafin/grape_logging
     logger.formatter = GrapeLogging::Formatters::Default.new
-    use GrapeLogging::Middleware::RequestLogger, { logger: logger }
+    use GrapeLogging::Middleware::RequestLogger, {logger: logger}
 
     helpers do
       def logger
@@ -55,7 +55,7 @@ module Travelingo
     end
 
     mount Travelingo::API::V1Root => '/v1'
-
+    
     # DOCS IN DEV MODE
 
     if ENV!.development?

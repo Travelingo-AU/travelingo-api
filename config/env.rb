@@ -8,7 +8,7 @@ ENV!.config do
   use :APP_DB_USER
   use :APP_DB_PASSWORD
 
-  use :APP_ROOT, default: File.expand_path("../#{__dir__}")
+  use :APP_ROOT, default: File.expand_path("#{__dir__}/..")
   use :RACK_ENV, default: 'development'
   use :FIREBASE_PROJECT_ID
 end
