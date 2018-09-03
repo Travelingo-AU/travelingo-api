@@ -2,6 +2,10 @@
 
 This is Travelingo's API
 
+## Before you begin 
+- Make sure you have Ruby 2.5.1 installed on your computer. Do this by: https://dev.to/andy/installing-ruby-250--2pe1
+- install the gems
+
 # Firebase
 
 ## FIREBASE_PROJECT_ID
