@@ -45,6 +45,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'pry-rails'
 gem 'database_rewinder', require: false # Used for rake db:seed in production too
 gem 'factory_bot', require: false # Used for rake db:seed in production too
+gem 'whenever', require: false
 
 group :development do
   gem 'annotate' # use rake annotate_models | rake remove_annotation if want to force annotation
