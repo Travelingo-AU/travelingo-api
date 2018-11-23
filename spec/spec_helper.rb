@@ -188,18 +188,18 @@ RSpec.configure do |config|
   # end
 
   config.before(:each) do |ex|
-    SpecLogger.logger.info("\n\n>>>> EXAMPLE STARTED >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
+    SpecLogger.logger.info(">>>> EXAMPLE STARTED >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   end
 
   config.after(:each) do
-    SpecLogger.logger.info("\n\n<<<< EXAMPLE ENDED <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n")
+    SpecLogger.logger.info("<<<< EXAMPLE ENDED <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
   end
 
   config.around(:each, :mail) do |ex|
-    SpecLogger.logger.info(">>>> Cleaning emails before test\n")
+    SpecLogger.logger.info(">>>> Cleaning emails before test")
     Mail::TestMailer.deliveries.clear
     ex.run
-    SpecLogger.logger.info("\n<<<< Cleaning emails after test")
+    SpecLogger.logger.info("<<<< Cleaning emails after test")
     Mail::TestMailer.deliveries.clear
   end
 

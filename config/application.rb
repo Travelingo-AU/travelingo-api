@@ -7,7 +7,7 @@ require "active_model/railtie"
 require "active_record/railtie"
 # require "active_storage/engine"
 require "action_controller/railtie"
-require "action_mailer/railtie"
+# require "action_mailer/railtie"
 require "action_view/railtie"
 # require "action_cable/engine"
 require "sprockets/railtie"
@@ -32,8 +32,6 @@ module TravelingoApp
     config.generators.system_tests = nil
 
     config.paths.add File.join('lib'), glob: File.join('**', '*.rb')
-    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
-    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
     config.autoload_paths += Dir[Rails.root.join('lib', '*')]
   end
 end

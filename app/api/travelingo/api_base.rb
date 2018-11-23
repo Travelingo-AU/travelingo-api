@@ -4,16 +4,15 @@ module Travelingo
     format :json
 
     #
-    # LOGGING & ERRORS
+    # LOGGING
     #
 
-    # See https://github.com/aserafin/grape_logging
-    logger.formatter = GrapeLogging::Formatters::Default.new
-    use GrapeLogging::Middleware::RequestLogger, {logger: logger}
+    logger SemanticLogger['API Endpoint']
+    insert_after Grape::Middleware::Formatter, APIEndpointProcessingReporter, test: true
 
     helpers do
       def logger
-        Travelingo::APIBase.logger
+        APIBase.logger
       end
 
       def api_error!(message, status: nil, headers: {})
@@ -39,29 +38,29 @@ module Travelingo
 
     use Rack::Cors do
       allow do
-        origins '*'
-        resource '/*',
+        origins "*"
+        resource "/*",
                  headers: :any,
                  methods: [:get, :post, :put, :patch, :delete, :options],
-                 expose:  ['access-token', 'token-type', 'client', 'expiry', 'uid']
+                 expose:  ["access-token", "token-type", "client", "expiry", "uid"]
       end
     end
 
     # ROUTES
 
-    desc 'Return a public timeline.'
+    desc "Return a public timeline."
     get :test do
-      present('ok')
+      present("ok")
     end
 
-    mount Travelingo::API::V1Root => '/v1'
-    
+    mount Travelingo::API::V1Root => "/v1"
+
     # DOCS IN DEV MODE
 
     if ENV!.development?
       add_swagger_documentation(
-        format:     :json, base_path: '/api/v1',
-        mount_path: '/docs', hide_documentation_path: true)
+        format:     :json, base_path: "/api/v1",
+        mount_path: "/docs", hide_documentation_path: true)
     end
   end
 end

@@ -33,4 +33,12 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # SEMANTIC LOGGER
+
+  config.rails_semantic_logger.format     = :default
+  config.rails_semantic_logger.started    = false
+  config.rails_semantic_logger.rendered   = false
+  config.rails_semantic_logger.processing = false
+  config.rails_semantic_logger.semantic   = false # don't convert messages to Hash
 end

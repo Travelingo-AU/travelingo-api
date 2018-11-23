@@ -8,7 +8,7 @@ module Authentication
         base.use Warden::Manager do |config|
           # Thrown symbol will be handled by `Grape::Middleware::Error#error_response`
           config.failure_app = ->(env) do
-            throw :error, status: 401, message: env['warden.options'].fetch(:message)
+            throw :error, status: 401, message: env["warden.options"].fetch(:message)
           end
 
           config.default_scope = :api_user
@@ -17,7 +17,7 @@ module Authentication
 
         base.helpers do
           def jwt_payload
-            env[ApiUserJwtHeaderStrategy::JWT_CONTENTS_ENV_KEY]
+            env[Authentication::API_USER_JWT_CONTENTS_ENV_KEY]
           end
 
           def current_user
@@ -29,7 +29,7 @@ module Authentication
           end
 
           def warden
-            env['warden']
+            env["warden"]
           end
         end
 

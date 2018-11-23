@@ -4,6 +4,8 @@ module Tasks
 
   class FirebaseCertsDownloader
 
+    CERTS_URI = 'https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com'
+
     # NOTE: Add customization if needed later
     def initialize(logger: nil)
       @logger = logger || default_logger
@@ -26,8 +28,6 @@ module Tasks
     end
 
     private
-
-    CERTS_URI = 'https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com'
 
     def requrest_current_firebase_certs
       log("requesting new certs JSON...")

@@ -51,5 +51,10 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # SEMANTIC LOGGER
+
+  config.rails_semantic_logger.log_level = :debug
+  config.rails_semantic_logger.semantic   = false # don't convert messages to Hash
 end

@@ -1,6 +1,6 @@
 module SpecLogger
   def self.logger
-    @_logger ||= ::LogBuilder.build(log_tag: 'RSpec')
+    @__logger ||= SemanticLogger['RSPEC']
   end
 end
 
