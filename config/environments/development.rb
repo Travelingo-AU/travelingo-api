@@ -17,7 +17,7 @@ Rails.application.configure do
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
 
-    config.cache_store = :memory_store
+    config.cache_store                = :memory_store
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
@@ -56,5 +56,5 @@ Rails.application.configure do
   # SEMANTIC LOGGER
 
   config.rails_semantic_logger.log_level = :debug
-  config.rails_semantic_logger.semantic   = false # don't convert messages to Hash
+  config.rails_semantic_logger.semantic  = false # don't convert messages to Hash
 end

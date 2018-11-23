@@ -27,5 +27,5 @@ class AdminUser < ApplicationRecord
 
   validates :full_name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, confirmation: true, length: { minimum: 8 }
+  validates :password, presence: true, confirmation: true, length: {minimum: 8}
 end

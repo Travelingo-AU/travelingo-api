@@ -15,15 +15,15 @@ module Authentication
 
         # verify_expiration && verify_not_before are true by default
         VERIFICATION_OPTIONS = {
-            algorithm:         'RS256',
-            aud:               ENV!['FIREBASE_PROJECT_ID'],
-            iss:               "https://securetoken.google.com/#{ENV!['FIREBASE_PROJECT_ID']}",
+          algorithm:         'RS256',
+          aud:               ENV!['FIREBASE_PROJECT_ID'],
+          iss:               "https://securetoken.google.com/#{ENV!['FIREBASE_PROJECT_ID']}",
 
-            verify_iat:        true,
-            verify_aud:        true,
-            verify_iss:        true,
-            verify_expiration: true,
-            verify_not_before: true
+          verify_iat:        true,
+          verify_aud:        true,
+          verify_iss:        true,
+          verify_expiration: true,
+          verify_not_before: true
         }.freeze
 
         def initialize(logger: nil)
