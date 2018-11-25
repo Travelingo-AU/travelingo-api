@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :full_name, :email, :email_verified, :dob, :mobile, :picture_url,
+  permit_params :full_name, :email, :email_verified, :dob, :mobile_number, :picture_url,
                 :firebase_user_uid, :firebase_meta, :role
   #
   # or
@@ -24,7 +24,7 @@ ActiveAdmin.register User do
       f.input :firebase_meta, as: :jsonb
       f.input :dob
       f.input :picture_url
-      f.input :mobile
+      f.input :mobile_number
       f.input :role
     end
 

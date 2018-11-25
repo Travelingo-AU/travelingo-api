@@ -10,7 +10,7 @@
 #  firebase_meta     :jsonb            not null
 #  dob               :date
 #  picture_url       :string
-#  mobile            :string
+#  mobile_number     :string
 #  role              :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -52,7 +52,7 @@ class User < ApplicationRecord
   #
 
   # Normalizes the attribute itself before validation
-  phony_normalize :mobile
+  phony_normalize :mobile_number
 
   #
   # LOGIC
@@ -81,7 +81,7 @@ class User < ApplicationRecord
   class Entity < Grape::Entity
     expose :id, documentation: {type: Integer, desc: 'User ID'}
     expose :email, documentation: {type: String, desc: 'User email'}
-    expose :mobile, documentation: {type: String, desc: 'User mobile'}
+    expose :mobile_number, documentation: {type: String, desc: 'User mobile number'}
     expose :dob, documentation: {type: String, desc: 'User DOB'}
     expose :full_name, documentation: {type: String, desc: 'User full name'}
     expose :first_name, documentation: {type: String, desc: 'User first name'}

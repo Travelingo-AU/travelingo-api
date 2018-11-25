@@ -13,7 +13,7 @@ module Travelingo::API::V1::Users
         requires :email, type: String
         requires :full_name, type: String
         requires :dob, type: String
-        requires :mobile, type: String
+        requires :mobile_number, type: String
       end
 
       # TODO: Do we need detailed validation errors JSON report?

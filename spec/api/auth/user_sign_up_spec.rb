@@ -11,7 +11,7 @@ RSpec.describe "[AUTH/USER] User sign-up", :api_spec, :user, :auth, :user_jwt do
     {email:     'email@example.com',
      full_name: 'John Doe',
      dob:       '01/01/2001',
-     mobile:    '+61 491 570 156'}
+     mobile_number:    '+61 491 570 156'}
   end
 
   describe "success:", :focus do
