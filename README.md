@@ -4,7 +4,7 @@ This is Travelingo's API
 
 ## Before you begin
 
-- Make sure you have Ruby 2.5.1 installed on your computer. Do this by: https://dev.to/andy/installing-ruby-250--2pe1
+- make sure you have Ruby 2.5.1 installed on your computer. [Instructions](https://dev.to/andy/installing-ruby-250--2pe1)
 - install gems with `bundle install`
 - read carefully `/.env` file and make desirable corrections in `.env.*` files for each environment. For example, `APP_URL` should be set in production to make Slack notifications links lead to the correct URL.
 
@@ -30,11 +30,11 @@ Don't forget to get fresh certs, of course
 
 ``spec/spec_helper`` contains jwt-related test settings for my another project, this doesn't affect tests in any way, so you can keep them.
 
-# Slack notifications
+# Slack
 
 *Don't forget to set valid env variables in order to this integration work*
 
-- you can test slack notifications JSON [here][https://api.slack.com/docs/messages/builder]
-- [message guidelines][https://api.slack.com/docs/message-guidelines]
-- [attachments][https://api.slack.com/docs/message-attachments]
-- [message formatting][https://api.slack.com/docs/message-formatting]
+- you can test slack notifications JSON [here](https://api.slack.com/docs/messages/builder)
+- [message guidelines](https://api.slack.com/docs/message-guidelines)
+- [attachments](https://api.slack.com/docs/message-attachments)
+- [message formatting](https://api.slack.com/docs/message-formatting)
