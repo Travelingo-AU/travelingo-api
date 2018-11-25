@@ -12,6 +12,44 @@ ActiveAdmin.register User do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  #
+
+  index do
+    selectable_column
+
+    column 'Image', :picture_url do |user|
+      image_tag user.picture_url, class: %w[aa-user-picture-index aa-user-picture]
+    end
+
+    column :full_name
+    column :email
+    column :mobile_number
+    column :dob
+    column :firebase_user_uid
+
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :image do |user|
+        image_tag user.picture_url, class: %w[aa-user-picture-show aa-user-picture]
+      end
+
+      row :full_name
+      row :email
+      row :mobile_number
+      row :dob
+      row :firebase_user_uid
+
+      row :firebase_meta do |user|
+        content_tag(:pre) do
+          JSON.pretty_generate(user.firebase_meta || {})
+        end
+      end
+    end
+  end
+
 
   json_editor
 

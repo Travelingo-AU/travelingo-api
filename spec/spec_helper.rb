@@ -16,11 +16,11 @@ abort("The RACK_ENV is set to production mode!") if ENV!.production?
 # developer-independent solution.
 #
 # Decoded token (additionally split by parts):
+#
 # {
 #   "header"  => {
 #     "alg" => "RS256",
-#     "kid" => "9a2d76dcc3e5c72673868119375cc55c678b7e46"}
-#   },
+#     "kid" => "9a2d76dcc3e5c72673868119375cc55c678b7e46"},
 #   "payload" => {
 #     "iss"       => "https://securetoken.google.com/dj-app2-3bf16",
 #     "name"      => "Ivan Byurganovskiy",
@@ -34,7 +34,6 @@ abort("The RACK_ENV is set to production mode!") if ENV!.production?
 #     "firebase"  => {
 #       "identities"       => {"google.com" => ["116936560063373783122"]},
 #       "sign_in_provider" => "google.com"}
-#     }
 #   }
 # }
 

@@ -16,3 +16,17 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.aa-user-picture {
+  border-radius: 10%;
+
+  &.aa-user-picture-index {
+    width:  32px;
+    height: 32px;
+  }
+
+  &.aa-user-picture-show {
+    max-width:  160px;
+    max-height: 160px;
+  }
+}
