@@ -16,44 +16,43 @@ abort("The RACK_ENV is set to production mode!") if ENV!.production?
 # developer-independent solution.
 #
 # Decoded token (additionally split by parts):
-# Header:
-#
-# {"alg" => "RS256", "kid" => "a0ceb46742a63e19642163a7286dcd42f7436366"}
-#
-# Payload:
-#
-#  {"iss"            => "https://securetoken.google.com/dj-app2-3bf16",
-#     "name"           => "Ivan Byurganovskiy",
-#     "picture"        =>
-#       "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12189808_10208563151544817_815941326244046854_n.jpg?oh=d642f5fce95c6256b02a7fe8dbc0eb34&oe=590AA4BE",
-#     "aud"            => "dj-app2-3bf16",
-#     "auth_time"      => 1535648116,
-#     "user_id"        => "iJwb40xCJDPCgXOHztLz5ThxyJ82",
-#     "sub"            => "iJwb40xCJDPCgXOHztLz5ThxyJ82",
-#     "iat"            => 1535648116,
-#     "exp"            => 1535651716,
-#     "email"          => "edjbox@gmail.com",
-#     "email_verified" => true,
-#     "firebase"       =>
-#       {"identities"       =>
-#          {"google.com" => ["116936560063373783122"], "email" => ["edjbox@gmail.com"]},
-#        "sign_in_provider" => "google.com"}}
+# {
+#   "header"  => {
+#     "alg" => "RS256",
+#     "kid" => "9a2d76dcc3e5c72673868119375cc55c678b7e46"}
+#   },
+#   "payload" => {
+#     "iss"       => "https://securetoken.google.com/dj-app2-3bf16",
+#     "name"      => "Ivan Byurganovskiy",
+#     "picture"   => "https://lh3.googleusercontent.com/-P1uQuWKADhU/AAAAAAAAAAI/AAAAAAAAAAA/AKB_U8sAa3doYl0iz0YNZvYXELsyQGCaWA/s96-c/photo.jpg",
+#     "aud"       => "dj-app2-3bf16",
+#     "auth_time" => 1484410712,
+#     "user_id"   => "j7qfTm1Ecedc8qZi8Wys8BzXHeb2",
+#     "sub"       => "j7qfTm1Ecedc8qZi8Wys8BzXHeb2",
+#     "iat"       => 1484410712,
+#     "exp"       => 1484414312,
+#     "firebase"  => {
+#       "identities"       => {"google.com" => ["116936560063373783122"]},
+#       "sign_in_provider" => "google.com"}
+#     }
+#   }
+# }
 
-ENV['TEST_FIREBASE_JWT']            = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImEwY2ViNDY3NDJhNjNlMTk2NDIxNjNhNzI4NmRjZDQyZjc0MzYzNjYifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZGotYXBwMi0zYmYxNiIsIm5hbWUiOiJJdmFuIEJ5dXJnYW5vdnNraXkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9zY29udGVudC54eC5mYmNkbi5uZXQvdi90MS4wLTEvcDEwMHgxMDAvMTIxODk4MDhfMTAyMDg1NjMxNTE1NDQ4MTdfODE1OTQxMzI2MjQ0MDQ2ODU0X24uanBnP29oPWQ2NDJmNWZjZTk1YzYyNTZiMDJhN2ZlOGRiYzBlYjM0Jm9lPTU5MEFBNEJFIiwiYXVkIjoiZGotYXBwMi0zYmYxNiIsImF1dGhfdGltZSI6MTUzNTY0ODExNiwidXNlcl9pZCI6ImlKd2I0MHhDSkRQQ2dYT0h6dEx6NVRoeHlKODIiLCJzdWIiOiJpSndiNDB4Q0pEUENnWE9IenRMejVUaHh5SjgyIiwiaWF0IjoxNTM1NjQ4MTE2LCJleHAiOjE1MzU2NTE3MTYsImVtYWlsIjoiZWRqYm94QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTE2OTM2NTYwMDYzMzczNzgzMTIyIl0sImVtYWlsIjpbImVkamJveEBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.M-3S6my2TlevPANNKKImem-hEm_XTRLjimRYGjbY6cS1RbfmiLfAxiA7iPZW3X2dRxIKEuwedbEk5-KRFI-nhEshTkHg7avpaUG3ev2A5QxK-VmTBB0eIzg2SGl6jhGcuIVGPg6D4R69OKfsYnETOi3g9gTlJy3PsBWJvKxVjnCNB4bX_JOVcVdOttpuoh803uDqFl-svj493yI1gE79Zoq8zMSYFT58E0Xq83f6fz7dhcGMv6fvK8puw5clswqFjfLkWN4B49ZzpeSeqPJLDZkil2Qq0O9ZgqaTKK2C5ziJxUP206hJj2gt1AawtP_y3Euzt3dovhiZGGqlVdF8Mg'
-ENV['TEST_FIREBASE_JWT_VALID_TIME'] = '2018-08-30 17:00:00 UTC'
-ENV['TEST_FIREBASE_JWT_CERT_KID']   = 'a0ceb46742a63e19642163a7286dcd42f7436366'
-ENV['TEST_FIREBASE_JWT_CERT']       = '-----BEGIN CERTIFICATE-----\nMIIDHDCCAgSgAwIBAgIIeSJTTBAicewwDQYJKoZIhvcNAQEFBQAwMTEvMC0GA1UE\nAxMmc2VjdXJldG9rZW4uc3lzdGVtLmdzZXJ2aWNlYWNjb3VudC5jb20wHhcNMTgw\nODI5MjEyMDI5WhcNMTgwOTE1MDkzNTI5WjAxMS8wLQYDVQQDEyZzZWN1cmV0b2tl\nbi5zeXN0ZW0uZ3NlcnZpY2VhY2NvdW50LmNvbTCCASIwDQYJKoZIhvcNAQEBBQAD\nggEPADCCAQoCggEBAJJRdQKSbD0gG+WBAETzX3GlpnxpCg5Ad2DiCFj4ecRvXPrP\nWsp49tx0ussmEGbIor34aGpawCtrd232Jb6aUrvL5c3CSmO81LTM7W2kAKBLvBld\n/r4pZSF5xDzKDTAIUsPC98VHLE1LnYUtBpdALF8mj/Ujt2PmdDVaPMtPnKvMuvYS\ny0cwj2JubQ/TP8K+nmnMqM5ZPqhL7gV7PiMLGl3v7o8KElX/2ToxdbKUuw10Rqbs\n/BbPEuAbFB9ELnDl7g+m2QlEekPw9I1QEQNoqJ833cVjx9ERPn0vjFsbiCMLGUWu\n2/CcHvA7u9f6g2+RXEDv/DrKHhzzGRmLvfmzEyUCAwEAAaM4MDYwDAYDVR0TAQH/\nBAIwADAOBgNVHQ8BAf8EBAMCB4AwFgYDVR0lAQH/BAwwCgYIKwYBBQUHAwIwDQYJ\nKoZIhvcNAQEFBQADggEBAC+4JwUo01FNTdoldzVVCAjnUfXzOAq5Y4HNfz6xUDLK\n9rTCZ7mZEJ35xqaFX0+A1ETT4pCD9AOk0O/LcIo1QM0BHjCkTBqTvA087nOAWlwT\n/0oBgRFn4va4yEC5XIBkNBhOOA26dQGl/NaOUotHpsjsEjJzXlPl/A2aJx1CgHCQ\nz4WAzn7IrVk1zQGsNxWIrpoOtwR9Op+ztc/yvddvH1nUFQJb45M/V4YxrAhxqAbA\njmeuXwnrUY2ZqYVU3fshpN7aLTySNINIjtPaki/nSiY6HlTttZvqPEJHA3TbmZbu\nhEKaPf0iVFJh28KbLof8GB0SSSGSv2mmv8SXliRotg0=\n-----END CERTIFICATE-----\n'
-ENV['TEST_FIREBASE_JWT_USER_UID']   = 'iJwb40xCJDPCgXOHztLz5ThxyJ82'
+ENV['TEST_FIREBASE_JWT']                = File.read("#{__dir__}/fixtures/firebase/user_jwt.txt").chomp
+ENV['TEST_FIREBASE_JWT_CERT']           = File.read("#{__dir__}/fixtures/firebase/firebase_cert.txt").chomp
+ENV['TEST_FIREBASE_JWT_VALID_DATETIME'] = '2017-01-14 17:00:00 UTC'
+ENV['TEST_FIREBASE_JWT_CERT_KID']       = '9a2d76dcc3e5c72673868119375cc55c678b7e46'
+ENV['TEST_FIREBASE_JWT_SUB']            = 'j7qfTm1Ecedc8qZi8Wys8BzXHeb2'
 
 # Add to envbang, so we can use its features in specs and factories
 # Google's certificates URL: https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com
 
 ENV!.config do
   use :TEST_FIREBASE_JWT, 'Example JWT token (comes from Firebase)'
-  use :TEST_FIREBASE_JWT_VALID_TIME, 'Time @ which token is still valid (please keep it simple, e.g. 017-01-14 17:00:00 UTC)'
+  use :TEST_FIREBASE_JWT_VALID_DATETIME, 'Time @ which token is still valid (please keep it simple, e.g. 017-01-14 17:00:00 UTC)'
   use :TEST_FIREBASE_JWT_CERT, 'Google certificate used to verify sign for token (valid and updated each 3 days)'
   use :TEST_FIREBASE_JWT_CERT_KID, 'Google certificate ID'
-  use :TEST_FIREBASE_JWT_USER_UID, 'Firebase user UID'
+  use :TEST_FIREBASE_JWT_SUB, 'Firebase user UID'
 end
 
 # This is required for tests to pass (same as JWT's `iss` field)

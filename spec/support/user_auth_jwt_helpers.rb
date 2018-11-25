@@ -6,7 +6,7 @@ module SpecHelpers
 
     # Time JWT is valid within
     def test_jwt_valid_time
-      Time.parse(ENV!['TEST_FIREBASE_JWT_VALID_TIME'])
+      Time.parse(ENV!['TEST_FIREBASE_JWT_VALID_DATETIME'])
     end
 
     # used for CertRepository to find required cert
@@ -26,7 +26,7 @@ module SpecHelpers
 
     # Using for find User in DB
     def test_jwt_user_uid
-      ENV!['TEST_FIREBASE_JWT_USER_UID']
+      ENV!['TEST_FIREBASE_JWT_SUB']
     end
 
     # EXAMPLE: Getting result from method
