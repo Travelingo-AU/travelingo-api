@@ -16,6 +16,13 @@ module Travelingo::API::V1::Users
         requires :mobile_number, type: String
       end
 
+      helpers do
+        def notify_about_new(user)
+          debug = ENV!.development?
+          AppNotifications::NewUserSignUp.notify_about_new(user, debug_payload: debug)
+        end
+      end
+
       # TODO: Do we need detailed validation errors JSON report?
       post :sign_up do
         if current_user.new_record?
@@ -23,6 +30,8 @@ module Travelingo::API::V1::Users
             current_user.assign_attributes_from_jwt_payload(jwt_payload)
             current_user.assign_attributes(declared(params))
             current_user.save!
+
+            notify_about_new(current_user)
 
             body(data: present(current_user))
           rescue ActiveRecord::RecordInvalid => e

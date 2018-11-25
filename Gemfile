@@ -15,6 +15,7 @@ gem 'rails_semantic_logger'
 
 # gem 'devise'
 gem 'phony_rails'
+gem 'slack-notifier'
 
 # ADMIN
 
@@ -50,6 +51,10 @@ gem 'database_rewinder', require: false # Used for rake db:seed in production to
 gem 'factory_bot', require: false # Used for rake db:seed in production too
 gem 'whenever', require: false
 
+group :development, :test do
+  gem 'launchy'
+end
+
 group :development do
   gem 'annotate' # use rake annotate_models | rake remove_annotation if want to force annotation
   gem 'awesome_print'
@@ -64,3 +69,4 @@ group :test do
   gem 'rspec-rails'
   gem 'webmock'
 end
+

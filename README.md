@@ -2,7 +2,7 @@
 
 This is Travelingo's API
 
-## Before you begin 
+## Before you begin
 - Make sure you have Ruby 2.5.1 installed on your computer. Do this by: https://dev.to/andy/installing-ruby-250--2pe1
 - install the gems
 
@@ -27,3 +27,10 @@ Don't forget to get fresh certs, of course
 # Tests
 
 ``spec/spec_helper`` contains jwt-related test settings for my another project, this doesn't affect tests in any way, so you can keep them.
+
+# Slack
+
+- you can test slack notifications JSON [here][https://api.slack.com/docs/messages/builder]
+- [message guidelines][https://api.slack.com/docs/message-guidelines]
+- [attachments][https://api.slack.com/docs/message-attachments]
+- [message formatting][https://api.slack.com/docs/message-formatting]

@@ -1,0 +1,11 @@
+*DOB*: <%= user.dob&.to_s(:long) %>
+*Email*: <%= user.email %>
+*Mobile number*: <%= user.mobile_number %>
+*Firebase UID*: <%= user.firebase_user_uid %>
+
+*Firebase Meta*
+
+```
+<%= JSON.pretty_generate(user.firebase_meta) %>
+```
+

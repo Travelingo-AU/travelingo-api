@@ -8,15 +8,16 @@ RSpec.describe "[AUTH/USER] User sign-up", :api_spec, :user, :auth, :user_jwt do
 
   # This params will override the ones stored in JWT payload
   let(:params) do
-    {email:     'email@example.com',
-     full_name: 'John Doe',
-     dob:       '01/01/2001',
-     mobile_number:    '+61 491 570 156'}
+    {email:         'email@example.com',
+     full_name:     'John Doe',
+     dob:           '01/01/2001',
+     mobile_number: '+61 491 570 156'}
   end
 
-  describe "success:", :focus do
+  describe "success:", :slack_stubs do
 
     let!(:fb_cert_record) { create(:firebase_cert) }
+    let!(:slack_request) { mock_successful_new_user_sign_up_slack_notification }
 
     example "verify token and create new user" do
       with_valid_jwt_time do
@@ -40,6 +41,10 @@ RSpec.describe "[AUTH/USER] User sign-up", :api_spec, :user, :auth, :user_jwt do
         expect(new_user.firebase_meta).not_to be_blank
         expect(new_user.identities).to be_kind_of Hash
         expect(new_user.sign_in_provider).to match /google/
+      end
+
+      aggregate_failures "Slack notified" do
+        expect(slack_request).to have_been_made.once
       end
     end
   end

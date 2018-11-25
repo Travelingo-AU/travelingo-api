@@ -2,6 +2,9 @@ ENV!.config do
   # Turn magic off: https://github.com/jcamenisch/ENV_BANG#default-type-conversion-behavior
   default_class String
 
+  use :APP_URL
+  use :NEW_USER_SIGN_UP_WEBHOOK_URL
+
   use :APP_DB_HOST
   use :APP_DB_PORT
   use :APP_DB_NAME
@@ -19,6 +22,10 @@ class ENV_BANG
       define_method method_name do
         self['RACK_ENV'] == method_name[0..-2] # slicing convert Symbol to string
       end
+    end
+
+    def app_root
+      Rails.root
     end
   end
 end
