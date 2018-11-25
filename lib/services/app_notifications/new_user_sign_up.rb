@@ -5,8 +5,11 @@ module AppNotifications
 
     include SemanticLogger::Loggable
 
-    WEBHOOK_URL        = ENV![:NEW_USER_SIGN_UP_WEBHOOK_URL]
-    TEMPLATE_FILE_PATH = "#{__dir__}/new_user_sign_up.md.erb"
+    CHANNEL_NAME = ENV![:NOTIFICATIONS_NEW_USER_SIGN_UP_CHANNEL]
+    AUTHOR       = ENV![:NOTIFICATIONS_NEW_USER_SIGN_UP_AUTHOR]
+    WEBHOOK_URL  = ENV![:NOTIFICATIONS_NEW_USER_SIGN_UP_WEBHOOK_URL]
+
+    TEMPLATE_FILE_PATH     = "#{__dir__}/new_user_sign_up.md.erb"
     DEBUG_MESSAGE_DIR_PATH = File.join(ENV!.app_root, 'tmp', 'slack_notifications')
 
     private_class_method :new
@@ -14,7 +17,7 @@ module AppNotifications
     MalformedAuthHeaderValue = Class.new(Authentication::AuthError)
 
     def initialize(logger: nil, debug_payload: false)
-      @logger = logger if logger
+      @logger        = logger if logger
       @debug_payload = debug_payload
     end
 
@@ -27,7 +30,10 @@ module AppNotifications
                attachments: build_attachments(user)}
 
       logger.debug("Slack payload", slack_payload: kargs)
-      debug_payload(kargs) if debug_payload?
+
+      # Use this in development mode, not actually send anything
+      return debug_payload(kargs) if debug_payload?
+
       notifier.post(**kargs)
     end
 
@@ -83,7 +89,7 @@ module AppNotifications
       return unless defined?(Launchy)
       Dir.mkdir(DEBUG_MESSAGE_DIR_PATH) unless Dir.exists?(DEBUG_MESSAGE_DIR_PATH)
 
-      json = JSON.pretty_generate(payload)
+      json          = JSON.pretty_generate(payload)
       tmp_file_path = File.join(DEBUG_MESSAGE_DIR_PATH, "new_user_sign_up.json")
       logger.debug("Temp file name path: #{tmp_file_path}")
 
@@ -93,7 +99,8 @@ module AppNotifications
 
     def notifier
       @notifier ||= Slack::Notifier.new(WEBHOOK_URL) do
-        defaults(channel: '#new_users', username: 'Bob')
+        defaults(channel: CHANNEL_NAME, username: AUTHOR)
+
         # We don't need HTML here, more info https://github.com/stevenosloan/slack-notifier#middleware
         middleware(
           format_message:     {formats: [:markdown]},
