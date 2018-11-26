@@ -11,7 +11,7 @@ module Authentication
     # before_logout
     # on_request
 
-    class ApiUserJwtHeaderStrategy < Warden::Strategies::Base
+    class JwtHeaderStrategy < Warden::Strategies::Base
       include SemanticLogger::Loggable
 
       def valid?

@@ -12,7 +12,7 @@ module Authentication
           end
 
           config.default_scope = :api_user
-          config.scope_defaults :api_user, strategies: [:api_user_jwt_header_strategy]
+          config.scope_defaults :api_user, strategies: [:user_jwt_header]
         end
 
         base.helpers do

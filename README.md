@@ -7,6 +7,18 @@ This is Travelingo's API
 - Make sure you have Ruby 2.5.1 installed on your computer. Do this by: https://dev.to/andy/installing-ruby-250--2pe1
 - install gems with `bundle install`
 - read carefully `/.env` file and make desirable corrections in `.env.*` files for each environment. For example, `APP_URL` should be set in production to make Slack notifications links lead to the correct URL.
+- run ``rake db:create db:migrate`` to setup database
+
+# Admin
+
+On a fresh installation you may want to create admin user. To do this in development env, just run ``rake db:seed``
+
+In production environment you need to pass additional flag: ``FORCE_DB_SEED=1 rake db:seed`` this is done to prevent occasional DB clean.
+
+See [db/seeds.rb](blob/master/db/seeds.rb) for admin credentials used.
+
+**Don't forget to use admin panel to change email/password in production mode ASAP!**
+
 
 # Firebase
 

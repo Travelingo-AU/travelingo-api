@@ -21,6 +21,8 @@ ActiveAdmin.register User do
       image_tag user.picture_url, class: %w[aa-user-picture-index aa-user-picture]
     end
 
+    id_column
+
     column :full_name
     column :email
     column :mobile_number

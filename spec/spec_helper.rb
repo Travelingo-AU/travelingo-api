@@ -68,6 +68,7 @@ require 'database_rewinder'
 require 'factory_bot'
 require 'json_expressions/rspec'
 require 'webmock/rspec'
+require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -124,6 +125,10 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
 
   # HOOKS
+
+  config.before(:suite) do
+    FileUtils.rm_rf("#{__dir__}/../tmp/capybara")
+  end
 
   config.before(:suite) do
     DatabaseRewinder.init
