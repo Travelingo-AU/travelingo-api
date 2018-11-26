@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe "[AUTH/USER] User sign-in", :api_spec, :user, :auth, :user_jwt do
+RSpec.describe "[API AUTH/USER] User sign-in", :api_spec, :user, :auth, :user_jwt do
 
   let(:token) { test_jwt }
   let(:auth_header) { bearer_header(token) }

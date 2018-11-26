@@ -16,10 +16,12 @@ Warden::Manager.serialize_from_session(:admin) do |id|
 end
 
 Rails.application.config.middleware.insert_after(ActionDispatch::Session::CookieStore, Warden::Manager) do |manager|
-  manager.default_strategies :admin_email_password
-  manager.default_scope = :admin
+  manager.default_scope = :nope_use_strict_scope!
+
   manager.scope_defaults :admin, strategies: [:admin_email_password]
-  manager.failure_app = lambda { |env| Admin::SessionsController.action(:new).call(env) }
+  manager.scope_defaults :api_user, strategies: [:user_jwt_header], action: '/fail'
+
+  manager.failure_app = Authentication::FailureApp
 end
 
 #

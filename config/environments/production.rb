@@ -46,7 +46,9 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [:request_id]
+  config.log_tags                       = {request_id: :request_id, ip: :remote_ip}
+  config.rails_semantic_logger.semantic = true
+  config.rails_semantic_logger.format   = :json
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

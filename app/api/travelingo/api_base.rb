@@ -9,6 +9,7 @@ module Travelingo
 
     logger SemanticLogger['API Endpoint']
     insert_after Grape::Middleware::Formatter, APIEndpointProcessingReporter, test: true
+    insert_after Rack::Head, Rack::RequestId
 
     helpers do
       def logger
@@ -47,11 +48,6 @@ module Travelingo
     end
 
     # ROUTES
-
-    desc "Return a public timeline."
-    get :test do
-      present("ok")
-    end
 
     mount Travelingo::API::V1Root => "/v1"
 

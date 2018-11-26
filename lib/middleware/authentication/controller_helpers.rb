@@ -18,7 +18,7 @@ module Authentication
       end
 
       def authenticate_admin
-        warden.authenticate(scope: :admin)
+        warden.authenticate(:admin_email_password, scope: :admin)
       end
 
       def admin_authenticated?

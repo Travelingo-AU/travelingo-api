@@ -36,6 +36,7 @@ Rails.application.configure do
 
   # SEMANTIC LOGGER
 
+  config.log_tags                         = nil
   config.rails_semantic_logger.format     = :default
   config.rails_semantic_logger.started    = false
   config.rails_semantic_logger.rendered   = false
