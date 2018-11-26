@@ -3,17 +3,8 @@ module Authentication
     module Grape
       def self.included(base)
 
-        # See https://github.com/wardencommunity/warden/wiki/Setup
-
-        base.use Warden::Manager do |config|
-          # Thrown symbol will be handled by `Grape::Middleware::Error#error_response`
-          config.failure_app = ->(env) do
-            throw :error, status: 401, message: env["warden.options"].fetch(:message)
-          end
-
-          config.default_scope = :api_user
-          config.scope_defaults :api_user, strategies: [:api_user_jwt_header_strategy]
-        end
+        # NOTE: We use Grape on top of rails, so warden configuration
+        # stored in RoR initializer (only one failure app may be present)
 
         base.helpers do
           def jwt_payload
@@ -25,7 +16,7 @@ module Authentication
           end
 
           def authenticate_user!
-            warden.authenticate!(scope: :api_user)
+            warden.authenticate!(:user_jwt_header, scope: :api_user)
           end
 
           def warden

@@ -11,4 +11,11 @@ FactoryBot.define do
     firebase_meta(identities:       {},
                   sign_in_provider: 'anonymous')
   end
+
+  factory :admin, class: 'AdminUser' do
+    sequence(:email) { |n| "f-admin-#{n}@example.com" }
+    sequence(:full_name) { |n| "John Doe#{n}" }
+    password { 'password' }
+    password_confirmation { password }
+  end
 end

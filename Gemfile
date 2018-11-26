@@ -9,13 +9,18 @@ gem 'env_bang-rails'
 gem 'rails', '~> 5.2.1'
 
 gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'bcrypt'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'phony_rails'
 gem 'puma', '~> 3.11'
 gem 'rails_semantic_logger'
-
-# gem 'devise'
-gem 'phony_rails'
 gem 'slack-notifier'
+gem 'warden'
+
+# VIEWS
+
+gem 'hamlit-rails'
+gem 'simple_form'
 
 # ADMIN
 
@@ -61,11 +66,13 @@ group :development do
   gem 'foreman'
 
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   gem 'json_expressions'
+  gem 'capybara'
   gem 'rspec-rails'
   gem 'webmock'
 end

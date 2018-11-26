@@ -1,21 +1,29 @@
 ActiveAdmin.register AdminUser do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :full_name, :password, :password_confirmation
 
   index do
     selectable_column
     id_column
+
     column :full_name
     column :email
-    # column :current_sign_in_at
-    # column :sign_in_count
     column :created_at
+
     actions
   end
 
   filter :email
-  # filter :current_sign_in_at
-  # filter :sign_in_count
+  filter :full_name
   filter :created_at
+
+  show do
+    attributes_table do
+      row :full_name
+      row :email
+      row :created_at
+      row :updated_at
+    end
+  end
 
   form do |f|
     f.inputs do

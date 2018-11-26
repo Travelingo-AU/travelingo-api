@@ -5,5 +5,12 @@ Rails.application.routes.draw do
 
   mount Travelingo::APIBase => '/api'
 
-  root to: "home#index"
+  # ADMIN AUTHENTICATION
+  namespace :admin do
+    get :sign_in, to: 'sessions#new'
+    post :sign_in, to: 'sessions#create'
+    get :sign_out, to: 'sessions#destroy'
+  end
+
+  root to: 'admin/sessions#new'
 end

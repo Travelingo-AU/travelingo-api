@@ -1,0 +1,7 @@
+.row.justify-content-center.align-items-center{style: "min-height:50vh"}
+  .col-8.col-lg-6.col-xl-5
+    %h1.text-center.mb-4 Admin sign-in
+    = simple_form_for @admin, wrapper: :horizontal_form, url: admin_sign_in_path, html: {class: "sign-in-form"} do |f|
+      = f.input :email, placeholder: 'Email'
+      = f.input :password, placeholder: 'Password', required: true
+      = f.button :submit, 'Sign-in', input_html: { class: "btn-block" }

@@ -1,29 +1,25 @@
 # == Schema Information
 #
-# Table name: admin_users
+# Table name: admins
 #
-#  id                     :bigint(8)        not null, primary key
-#  full_name              :string           not null
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  id              :bigint(8)        not null, primary key
+#  email           :string           not null
+#  full_name       :string           not null
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 # Indexes
 #
-#  index_admin_users_on_email                 (email) UNIQUE
-#  index_admin_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_admins_on_email  (email) UNIQUE
 #
 
 class AdminUser < ApplicationRecord
   include FullName
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  # devise :database_authenticatable, :recoverable, :rememberable, :validatable
+  has_secure_password
+
+  self.table_name = 'admins'
 
   validates :full_name, presence: true
   validates :email, presence: true, uniqueness: true
