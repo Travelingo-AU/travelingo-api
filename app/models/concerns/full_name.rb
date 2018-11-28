@@ -4,12 +4,11 @@ module FullName
   attr_reader :first_name, :last_name
 
   def full_name=(value)
-    if (value.present?)
-      name_parts              = value.split(/\s+/)
-      @first_name, @last_name = [name_parts.shift, name_parts.slice(-1, 1)]
-    else
-      @first_name, @last_name = [nil] * 2
-    end
+    value      = String(value).strip
+    name_parts = value.split(/\s+/)
+
+    # Take really last part as a last_name
+    @first_name, @last_name = [name_parts.shift, name_parts[-1]]
 
     super
   end
