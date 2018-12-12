@@ -56,7 +56,8 @@ module Travelingo
     unless ENV!.test?
       add_swagger_documentation(
         format:                  :json,
-        base_path:               "/api/v1",
+        base_path:               "/api",
+        add_base_path:           true,
         mount_path:              "/docs",
         hide_documentation_path: true)
     end
