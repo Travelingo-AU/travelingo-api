@@ -5,6 +5,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+#host: localhost
   host: <%= ENV!['APP_DB_HOST'] %>
   port: <%= ENV!['APP_DB_PORT'] %>
   database: <%= ENV!['APP_DB_NAME'] %>
