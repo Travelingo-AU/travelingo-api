@@ -22,6 +22,16 @@ See [db/seeds.rb](blob/master/db/seeds.rb) for admin credentials used.
 
 # Firebase
 
+## JWT
+
+The authentication *header* format:
+
+```
+X-HTTP_AUTHORIZATION=Bearer xxx.xxx.xxx
+```
+
+where `xxx.xxx.xxx` part you receive from Firebase
+
 ## FIREBASE_PROJECT_ID
 
 In order to run the app you will need to set this var in `.env` file (*done*)
@@ -50,3 +60,12 @@ Don't forget to get fresh certs, of course
 - [message guidelines](https://api.slack.com/docs/message-guidelines)
 - [attachments](https://api.slack.com/docs/message-attachments)
 - [message formatting](https://api.slack.com/docs/message-formatting)
+
+# API Docs
+
+At the early stage, you can use [this SPA client](https://petstore.swagger.io) for API docs.
+
+Just type one of these URLs and press *Explore* button:
+
+- if you have running local (development) API app: `http://localhost:3000/api/docs`
+- if you want to get docs for production instance: `https://travelingo-api-v1.herokuapp.com/api/docs`
