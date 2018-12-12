@@ -53,10 +53,12 @@ module Travelingo
 
     # DOCS IN DEV MODE
 
-    if ENV!.development?
+    unless ENV!.test?
       add_swagger_documentation(
-        format:     :json, base_path: "/api/v1",
-        mount_path: "/docs", hide_documentation_path: true)
+        format:                  :json,
+        base_path:               "/api/v1",
+        mount_path:              "/docs",
+        hide_documentation_path: true)
     end
   end
 end
