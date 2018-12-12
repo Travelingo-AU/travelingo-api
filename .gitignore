@@ -1,0 +1,9 @@
+/.bundle
+
+/log/*
+!/log/.keep
+
+/tmp/*
+
+
+/node_modules
