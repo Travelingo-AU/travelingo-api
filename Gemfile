@@ -10,8 +10,8 @@ gem 'rails', '~> 5.2.1'
 
 gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'bcrypt'
-#gem 'pg', '>= 0.18', '< 2.0'
-gem 'pg', '~> 0.18.4'
+gem 'pg', '>= 0.18', '< 2.0'
+#gem 'pg', '~> 0.18.4'
 gem 'phony_rails'
 gem 'puma', '~> 3.11'
 gem 'rails_semantic_logger'
